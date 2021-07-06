@@ -1,0 +1,30 @@
+﻿@using MvcStock.Models.Entity
+@model List<TBLCUSTOMERS>
+@{
+    ViewBag.Title = "CustomerList";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>MÜŞTERİ ID</th>
+        <th>MÜŞTERİ ADI</th>
+        <th>MÜŞTERİ SOYADI</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+    </tr>
+    <tbody>
+        @foreach (var cstmr in Model)
+        {
+        <tr>
+            <th>@cstmr.CUSTOMERID</th>
+            <td>@cstmr.CUSTOMERFİRSTNAME</td>
+            <td>@cstmr.CUSTOMERLASTNAME</td>
+            <td><a href="/Customer/Delete/@cstmr.CUSTOMERID" class="btn btn-danger">SİL</a></td>
+            <td><a href="/Customer/GetCustomer/@cstmr.CUSTOMERID" class="btn btn-success">GÜNCELLE</a></td>
+        </tr>
+        }
+    </tbody>
+</table>
+<a href="/Customer/NewCustomerAdd/" class="btn btn-primary">Yeni Müşteri Ekle</a>
+

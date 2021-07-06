@@ -1,0 +1,28 @@
+﻿
+@using MvcStock.Models.Entity;
+@model List<TBLCATEGORIES>
+@{
+    ViewBag.Title = "CategoryList";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>KATEGORİ ID</th>
+        <th>KATEGORİ ADI</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+    </tr>
+    <tbody>
+        @foreach(var ctgry in Model)
+            {
+        <tr>
+            <th>@ctgry.CATEGORYID</th>
+            <td>@ctgry.CATEGORYNAME</td>
+            <td><a href="/Category/Delete/@ctgry.CATEGORYID" class="btn btn-danger">SİL</a></td>
+            <td><a href="/Category/GetCategory/@ctgry.CATEGORYID" class="btn btn-success">GÜNCELLE</a></td>
+        </tr>
+            }
+    </tbody>
+</table>
+<a href="/Category/NewCategoryAdd/" class="btn btn-primary">Yeni Kategori Ekle</a>
