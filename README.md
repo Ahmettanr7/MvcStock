@@ -1,4 +1,5 @@
   # MvcStock
+  * Kullanıcı arayüzüyle (UI) çok ilgilenmedim. Daha çok Backend tarzı işlevlere öncelik verdim. 
   
     * ÖZELLİKLER
    * Kategori, Ürün, Müşteri ve Satış tabloları için ekleme silme ve güncelleme,
