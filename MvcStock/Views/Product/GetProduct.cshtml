@@ -7,22 +7,25 @@
 @using (Html.BeginForm("Update", "Product", FormMethod.Post))
 
 {
-    <div>
-        @Html.LabelFor(m => m.PRODUCTNAME)
-        @Html.TextBoxFor(m => m.PRODUCTNAME, new { @class = "form-control" })
+<div>
+    @Html.TextBoxFor(m => m.ID, new { @class = "hidden" })
+    <label>Ürün Adı</label>
+    @Html.TextBoxFor(m => m.PRODUCTNAME, new { @class = "form-control" })
+    <br />
+    <label>Marka</label>
+    @Html.TextBoxFor(m => m.BRAND, new { @class = "form-control" })
+    <br />
+    <label>Kategori</label>
+    @Html.DropDownListFor(m => m.TBLCATEGORIES.CATEGORYID, (List<SelectListItem>)ViewBag.category, new { @class = "form-control" })
+    <br />
+    <label>Fiyat</label>
+    @Html.TextBoxFor(m => m.PRICE, new { @class = "form-control" })
+    <br />
+    <label>Stok</label>
+    @Html.TextBoxFor(m => m.STOCK, new { @class = "form-control" })
 
-        <br />
 
-        @Html.LabelFor(m => m.BRAND)
-        @Html.TextBoxFor(m => m.BRAND, new { @class = "form-control" })
-        @Html.TextBoxFor(m => m.BRAND, new { @class = "form-control" })
-
-        <br />
-
-        @Html.LabelFor(m => m.PRODUCTCATEGORYID)
-        @Html.DropDownListFor(m => m.TBLCATEGORIES.CATEGORYID, (List<SelectListItem>)ViewBag.category, new { @class = "form-control" })
-
-    </div>
+</div>
     <div>
         <button class="btn btn-success">GÜNCELLE</button>
     </div>

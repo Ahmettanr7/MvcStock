@@ -1,0 +1,28 @@
+﻿@model MvcStock.Models.Entity.TBLSALES
+@{
+    ViewBag.Title = "NewSaleAdd";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<form class="form-group" method="post">
+    <div>
+        <label>Ürün Seçiniz</label>
+        @Html.DropDownListFor(m => m.TBLPRODUCTS.ID, (List<SelectListItem>)ViewBag.product, new { @class = "form-control" })
+
+        <label>Müşteri Seçiniz</label>
+        @Html.DropDownListFor(m => m.TBLCUSTOMERS.CUSTOMERID, (List<SelectListItem>)ViewBag.customer, new { @class = "form-control" })
+
+
+        <label>Miktar</label>
+        <input type="number" class="form-control" name="AMOUNT" required />
+
+        <label>Fiyat</label>
+        <input type="number" class="form-control" name="PRICE" required />
+
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Satışı Yap</button>
+    </div>
+</form>
+
+

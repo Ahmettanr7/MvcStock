@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MvcStock.Models.Entity;
+using PagedList;
+using PagedList.Mvc;
 
 namespace MvcStock.Controllers
 {
@@ -26,6 +28,10 @@ namespace MvcStock.Controllers
         [HttpPost]
         public ActionResult NewCustomerAdd(TBLCUSTOMERS cstmr)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("NewCustomerAdd");
+            }
             db.TBLCUSTOMERS.Add(cstmr);
             db.SaveChanges();
             return RedirectToAction("CustomerList");

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MvcStock.Models.Entity;
+using PagedList;
+using PagedList.Mvc;
 
 namespace MvcStock.Controllers
 {
@@ -51,7 +53,30 @@ namespace MvcStock.Controllers
         public ActionResult GetProduct(int id)
         {
             var product = db.TBLPRODUCTS.Find(id);
+
+            List<SelectListItem> values = (from ctgry in db.TBLCATEGORIES.ToList()
+                                           select new SelectListItem
+                                           {
+                                               Text = ctgry.CATEGORYNAME,
+                                               Value = ctgry.CATEGORYID.ToString()
+                                           }).ToList();
+            ViewBag.category = values;
+
+
             return View("GetProduct", product);
+        }
+
+        public ActionResult Update (TBLPRODUCTS newProduct)
+        {
+            var product = db.TBLPRODUCTS.Find(newProduct.ID);
+            product.PRODUCTNAME = newProduct.PRODUCTNAME;
+            product.BRAND = newProduct.BRAND;
+            product.PRICE = newProduct.PRICE;
+            product.STOCK = newProduct.STOCK;
+            var ctgry = db.TBLCATEGORIES.Where(m => m.CATEGORYID == newProduct.TBLCATEGORIES.CATEGORYID).FirstOrDefault();
+            product.PRODUCTCATEGORYID = ctgry.CATEGORYID;
+            db.SaveChanges();
+            return RedirectToAction("ProductList");
         }
     }
 }

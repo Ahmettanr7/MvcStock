@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c5c8a5cc4e0e492abaff6f541b01054d" Name="Diagram1" ZoomLevel="47">
+      <Diagram DiagramId="c5c8a5cc4e0e492abaff6f541b01054d" Name="Diagram1" ZoomLevel="93">
         <EntityTypeShape EntityType="MvcDbStockModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MvcDbStockModel.TBLCATEGORIES" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="MvcDbStockModel.TBLCUSTOMERS" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />

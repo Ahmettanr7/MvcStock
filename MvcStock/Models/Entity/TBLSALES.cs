@@ -18,8 +18,8 @@ namespace MvcStock.Models.Entity
         public Nullable<int> PRODUCTID { get; set; }
         public Nullable<int> CUSTOMERID { get; set; }
         public Nullable<int> AMOUNT { get; set; }
-        public Nullable<decimal> PRİCE { get; set; }
-    
+        public Nullable<decimal> PRICE { get; set; }
+
         public virtual TBLCUSTOMERS TBLCUSTOMERS { get; set; }
         public virtual TBLPRODUCTS TBLPRODUCTS { get; set; }
     }

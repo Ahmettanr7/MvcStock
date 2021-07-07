@@ -1,4 +1,4 @@
-﻿
+﻿@model MvcStock.Models.Entity.TBLCUSTOMERS
 @{
     ViewBag.Title = "NewCustomerAdd";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
@@ -7,9 +7,12 @@
 <form class="form-group" method="post">
     <div>
         <label>Müşteri Adı</label>
-        <input type="text" class="form-control" name="CUSTOMERFİRSTNAME" />
+        @Html.TextAreaFor(m => m.CUSTOMERFİRSTNAME, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CUSTOMERFİRSTNAME, "", new { @style = "color:red" })
+        <br />
         <label>Müşteri Soyadı</label>
-        <input type="text" class="form-control" name="CUSTOMERLASTNAME" />
+        @Html.TextAreaFor(m => m.CUSTOMERLASTNAME, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CUSTOMERLASTNAME, "", new { @style = "color:red" })
     </div>
     <div style="margin-top:15px">
         <button class="btn btn-info">Müşteri Ekle</button>

@@ -159,7 +159,7 @@
           <Property Name="PRODUCTID" Type="Int32" />
           <Property Name="CUSTOMERID" Type="Int32" />
           <Property Name="AMOUNT" Type="Int32" />
-          <Property Name="PRİCE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PRICE" Type="Decimal" Precision="18" Scale="2" />
           <NavigationProperty Name="TBLCUSTOMERS" Relationship="Self.FK_TBLSALES_TBLCUSTOMERS" FromRole="TBLSALES" ToRole="TBLCUSTOMERS" />
           <NavigationProperty Name="TBLPRODUCTS" Relationship="Self.FK_TBLSALES_TBLPRODUCTS" FromRole="TBLSALES" ToRole="TBLPRODUCTS" />
         </EntityType>
@@ -271,7 +271,7 @@
                 <ScalarProperty Name="PRODUCTID" ColumnName="PRODUCTID" />
                 <ScalarProperty Name="CUSTOMERID" ColumnName="CUSTOMERID" />
                 <ScalarProperty Name="AMOUNT" ColumnName="AMOUNT" />
-                <ScalarProperty Name="PRİCE" ColumnName="PRİCE" />
+                <ScalarProperty Name="PRICE" ColumnName="PRİCE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

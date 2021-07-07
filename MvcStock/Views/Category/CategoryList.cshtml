@@ -1,28 +1,46 @@
 ﻿
 @using MvcStock.Models.Entity;
+@using PagedList
+@using PagedList.Mvc
 @model List<TBLCATEGORIES>
 @{
     ViewBag.Title = "CategoryList";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
-<table class="table table-bordered">
-    <tr>
-        <th>KATEGORİ ID</th>
-        <th>KATEGORİ ADI</th>
-        <th>SİL</th>
-        <th>GÜNCELLE</th>
-    </tr>
-    <tbody>
-        @foreach(var ctgry in Model)
-            {
+<table id="categoryList" class="table table-bordered">
+    <thead>
         <tr>
-            <th>@ctgry.CATEGORYID</th>
-            <td>@ctgry.CATEGORYNAME</td>
-            <td><a href="/Category/Delete/@ctgry.CATEGORYID" class="btn btn-danger">SİL</a></td>
-            <td><a href="/Category/GetCategory/@ctgry.CATEGORYID" class="btn btn-success">GÜNCELLE</a></td>
+            <th>KATEGORİ ID</th>
+            <th>KATEGORİ ADI</th>
+            <th>SİL</th>
+            <th><a href="/Category/NewCategoryAdd/" class="btn btn-primary">Yeni Kategori Ekle</a></th>
         </tr>
-            }
+    </thead>
+    <tbody>
+        @foreach (var ctgry in Model)
+        {
+            <tr>
+                <th>@ctgry.CATEGORYID</th>
+                <td>@ctgry.CATEGORYNAME</td>
+                <td>@Html.ActionLink("SİL", "Delete", new { id = ctgry.CATEGORYID }, new { @class = "btn btn-danger", onclick = "return confirm('Silmeyi onaylıyor musunuz?')" })</td>
+                <td><a href="/Category/GetCategory/@ctgry.CATEGORYID" class="btn btn-success">GÜNCELLE</a></td>
+            </tr>
+        }
     </tbody>
 </table>
-<a href="/Category/NewCategoryAdd/" class="btn btn-primary">Yeni Kategori Ekle</a>
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $(document).ready(function () {
+        $('#categoryList').DataTable({
+            language: {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json"
+            }
+        });
+    });
+</script>

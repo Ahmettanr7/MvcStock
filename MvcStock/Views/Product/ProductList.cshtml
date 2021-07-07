@@ -1,36 +1,55 @@
 ﻿@using MvcStock.Models.Entity
+@using PagedList
+@using PagedList.Mvc
 @model List<TBLPRODUCTS>
 @{
     ViewBag.Title = "ProductList";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
-
-<table class="table table-bordered">
-    <tr>
-        <th>ÜRÜN ID</th>
-        <th>ÜRÜN ADI</th>
-        <th>MARKASI</th>
-        <th>KATEGORİ</th>
-        <th>FİYAT</th>
-        <th>STOK</th>
-        <th>SİL</th>
-        <th>GÜNCELLE</th>
-    </tr>
-    <tbody>
-        @foreach(var prdct in Model)
-            {
+<table id="productList" class="table table-bordered">
+    <thead>
         <tr>
-            <th>@prdct.ID</th>
-            <td>@prdct.PRODUCTNAME</td>
-            <td>@prdct.BRAND</td>
-            <td>@prdct.TBLCATEGORIES.CATEGORYNAME</td>
-            <td>@prdct.PRICE</td>
-            <td>@prdct.STOCK</td>
-            <td><a href="/Product/Delete/@prdct.ID" class="btn btn-danger">SİL</a></td>
-            <td><a href="/Product/GetProduct/@prdct.ID" class="btn btn-success">GÜNCELLE</a></td>
+            <th>ÜRÜN ID</th>
+            <th>ÜRÜN ADI</th>
+            <th>MARKASI</th>
+            <th>KATEGORİ</th>
+            <th>FİYAT</th>
+            <th>STOK</th>
+            <th>SİL</th>
+            <th><a href="/Product/NewProductAdd/" class="btn btn-primary">Yeni Ürün Ekle</a></th>
         </tr>
-            }
+    </thead>
+    <tbody>
+        @foreach (var prdct in Model)
+        {
+            <tr>
+                <th>@prdct.ID</th>
+                <td>@prdct.PRODUCTNAME</td>
+                <td>@prdct.BRAND</td>
+                <td>@prdct.TBLCATEGORIES.CATEGORYNAME</td>
+                <td>@prdct.PRICE</td>
+                <td>@prdct.STOCK</td>
+                <td>@Html.ActionLink("SİL", "Delete", new { id = prdct.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Silmeyi onaylıyor musunuz?')" })</td>
+                <td><a href="/Product/GetProduct/@prdct.ID" class="btn btn-success">GÜNCELLE</a></td>
+            </tr>
+        }
     </tbody>
 </table>
-<a href="/Product/NewProductAdd/" class="btn btn-primary">Yeni Ürün Ekle</a>
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $(document).ready(function () {
+        $('#productList').DataTable({
+            language: {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json"
+            }
+        });
+    });
+</script>
+
+
 

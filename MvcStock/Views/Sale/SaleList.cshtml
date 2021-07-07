@@ -1,0 +1,54 @@
+﻿
+@using MvcStock.Models.Entity;
+@using PagedList
+@using PagedList.Mvc
+@model List<TBLSALES>
+@{
+    ViewBag.Title = "SaleList";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table id="saleList" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>SATIŞ ID</th>
+            <th>ÜRÜN</th>
+            <th>MÜŞTERİ</th>
+            <th>MİKTAR</th>
+            <th>FİYAT</th>
+            <th>SİL</th>
+            <th><a href="/Sale/NewSaleAdd/" class="btn btn-primary">SATIŞ YAP</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sale in Model)
+        {
+            <tr>
+                <th>@sale.SALEID</th>
+                <td>@sale.TBLPRODUCTS.PRODUCTNAME</td>
+                <td>@sale.TBLCUSTOMERS.CUSTOMERFİRSTNAME @sale.TBLCUSTOMERS.CUSTOMERLASTNAME </td>
+                <td>@sale.AMOUNT</td>
+                <td>@sale.PRICE</td>
+                <td>@Html.ActionLink("SİL", "Delete", new { id = sale.SALEID }, new { @class = "btn btn-danger", onclick = "return confirm('Silmeyi onaylıyor musunuz?')" })</td>
+                <td><a href="/Sale/GetSale/@sale.SALEID" class="btn btn-success">GÜNCELLE</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $(document).ready(function () {
+        $('#saleList').DataTable({
+            language: {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json"
+            }
+        });
+    });
+</script>
+
+

@@ -7,19 +7,19 @@
 <form class="form-group" method="post">
     <div>
         <label>Ürün Adı</label>
-        <input type="text" class="form-control" name="PRODUCTNAME" />
+        <input type="text" class="form-control" name="PRODUCTNAME" required maxlength="25" />
 
         <label>Marka</label>
-        <input type="text" class="form-control" name="BRAND" />
+        <input type="text" class="form-control" name="BRAND" required/>
 
         <label>Kategori Seçiniz</label>
         @Html.DropDownListFor(m=>m.TBLCATEGORIES.CATEGORYID,(List<SelectListItem>)ViewBag.category, new {@class="form-control"})
 
         <label>Fiyatı</label>
-        <input type="number" class="form-control" name="PRICE" />
+        <input type="number" class="form-control" name="PRICE" required/>
 
         <label>Stok Adedi</label>
-        <input type="number" class="form-control" name="STOCK" />
+        <input type="number" class="form-control" name="STOCK" required/>
     </div>
     <div style="margin-top:15px">
         <button class="btn btn-info">Ürün Ekle</button>
