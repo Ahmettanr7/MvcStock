@@ -8,6 +8,12 @@
    * Satış güncellemesi yapıldığında ürünün stok adedinin de otomatik güncellenmesi ( Trigger )
    
    
+   * Veritabanı Diagram
+![alt text](https://res.cloudinary.com/ahmettanrikulu/image/upload/v1625680358/MvcDbStock_cgfrhl.png)
+
+   * Satış Triggerları
+![alt text](https://res.cloudinary.com/ahmettanrikulu/image/upload/v1625680359/trigger_zyx81v.png)
+   
     * Kategori Listesi
 ![alt text](https://res.cloudinary.com/ahmettanrikulu/image/upload/v1625678419/category1_fls6ms.png)
 
